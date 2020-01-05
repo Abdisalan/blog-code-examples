@@ -28,7 +28,6 @@ let style = {j|
   .container {
     margin: 12px 0px;
     box-shadow: 0px 4px 16px rgb(200, 200, 200);
-    width: 720px;
     border-radius: 12px;
     font-family: sans-serif;
   }
