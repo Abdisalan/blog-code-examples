@@ -1,34 +1,30 @@
 'use strict';
 
+var Curry = require("bs-platform/lib/js/curry.js");
 var React = require("react");
 
 function Form(Props) {
+  var match = React.useState((function () {
+          return "";
+        }));
+  var setName = match[1];
+  var name = match[0];
   var onSubmit = function (e) {
     e.preventDefault();
-    console.log(e.target.name.value);
-    console.log(e.target.city.value);
+    console.log("Hi my name is " + (String(name) + ""));
     return /* () */0;
   };
   var onChange = function (e) {
-    console.log(e.target.value);
-    return /* () */0;
+    return Curry._1(setName, e.target.value);
   };
   return React.createElement("form", {
               onSubmit: onSubmit
             }, React.createElement("label", undefined, "Name"), React.createElement("input", {
                   name: "name",
                   type: "text",
+                  value: name,
                   onChange: onChange
-                }), React.createElement("label", undefined, "City"), React.createElement("select", {
-                  name: "city",
-                  onChange: onChange
-                }, React.createElement("option", {
-                      value: "Boston"
-                    }, "Boston"), React.createElement("option", {
-                      value: "New York"
-                    }, "New York"), React.createElement("option", {
-                      value: "Seattle"
-                    }, "Seattle")), React.createElement("button", {
+                }), React.createElement("button", {
                   type: "submit"
                 }, "submit"));
 }
