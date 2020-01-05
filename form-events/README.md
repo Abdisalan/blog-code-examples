@@ -11,3 +11,10 @@ $ npm start
 ```bash
 $ npm run server
 ```
+
+## Based off bs-platform template
+This project was bootstrapped using bucklescript by running these commands
+```bash
+$ npm install --global bs-platform@7.0.1
+$ bsb -init form-events -theme react-hooks
+```
