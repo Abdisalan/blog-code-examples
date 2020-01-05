@@ -8,7 +8,7 @@ let make = () => {
   };
 
   let onChange = (e: ReactEvent.Form.t): unit => {
-    Js.log(e->ReactEvent.Form.target);
+    Js.log(e->ReactEvent.Form.target##value);
   };
 
   <form onSubmit>
@@ -21,6 +21,5 @@ let make = () => {
       <option value="Seattle"> {React.string("Seattle")} </option>
     </select>
     <button type_="submit"> {React.string("submit")} </button>
-    <br />
   </form>;
 };

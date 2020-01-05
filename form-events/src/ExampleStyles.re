@@ -18,6 +18,8 @@ let style = {j|
     border: none;
     padding: 8px;
     font-size: 16px;
+    display: block;
+    border-radius: 5px;
   }
   button:active {
     background-color: $reasonReactBlue;
@@ -40,5 +42,21 @@ let style = {j|
     background-color: white;
     padding: 16px;
     border-radius: 0px 0px 12px 12px;
+  }
+  label {
+    display: block;
+    color: #555;
+    font-size: 0.875em;
+  }
+  input {
+    border-radius: 5px;
+    border: 1px solid #ddd; padding: 7px; display: block;
+    width: 300px;
+    margin-bottom: 15px;
+    margin-top: 5px;
+  }
+  select {
+    margin-bottom: 15px;
+    margin-top: 5px;
   }
 |j};

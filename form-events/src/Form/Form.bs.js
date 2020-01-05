@@ -10,7 +10,7 @@ function Form(Props) {
     return /* () */0;
   };
   var onChange = function (e) {
-    console.log(e.target);
+    console.log(e.target.value);
     return /* () */0;
   };
   return React.createElement("form", {
@@ -30,7 +30,7 @@ function Form(Props) {
                       value: "Seattle"
                     }, "Seattle")), React.createElement("button", {
                   type: "submit"
-                }, "submit"), React.createElement("br", undefined));
+                }, "submit"));
 }
 
 var make = Form;
