@@ -19,27 +19,24 @@ app.get("/video", function (req, res) {
   const videoSize = fs.statSync("bigbuck.mp4").size;
 
   // Parse Range
-  let [start, end] = range
-    .split("-")
-    .map((time) => Number(time.replace(/\D/g, "")));
+  const CHUNK_SIZE = 10 ** 6; // 1MB
+  const start = Number(range.replace(/\D/g, ""));
+  const end = Math.min(start + CHUNK_SIZE, videoSize - 1);
 
-  if (!end) {
-    end = videoSize - 1;
-  }
-
-  // Create headres
-  const chunksize = end - start + 1;
-  const videoStream = fs.createReadStream(videoPath, { start, end });
+  // Create headers
+  const length = end - start + 1;
   const headers = {
     "Content-Range": `bytes ${start}-${end}/${videoSize}`,
     "Accept-Ranges": "bytes",
-    "Content-Length": chunksize,
+    "Content-Length": length,
     "Content-Type": "video/mp4",
   };
 
   // HTTP Status 206 for Partial Content
   res.writeHead(206, headers);
 
+  // create video read stream for this particular chunk
+  const videoStream = fs.createReadStream(videoPath, { start, end });
   // Stream the video chunk to the client
   videoStream.pipe(res);
 });
