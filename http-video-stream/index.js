@@ -1,10 +1,9 @@
 const express = require("express");
-const path = require("path");
 const app = express();
 const fs = require("fs");
 
 app.get("/", function (req, res) {
-  res.sendFile(path.join(__dirname + "/index.html"));
+  res.sendFile(__dirname + "/index.html");
 });
 
 app.get("/video", function (req, res) {
