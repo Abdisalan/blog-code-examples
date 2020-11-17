@@ -1,0 +1,26 @@
+version: "3.7"
+services:
+  app:
+    image: node:12-alpine
+    command: sh -c "npm install && npm start"
+    ports:
+      - 8000:8000
+    working_dir: /app
+    container_name: app
+    volumes:
+      - ./:/app
+
+  db:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    container_name: db
+    volumes:
+      - mongo-data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=user
+      - MONGO_INITDB_ROOT_PASSWORD=password
+      - MONGO_INITDB_DATABASE=videos
+
+volumes:
+  mongo-data:
