@@ -8,6 +8,7 @@ app.get("/", function (req, res) {
   res.sendFile(__dirname + "/index.html");
 });
 
+// Sorry about this monstrosity
 app.get('/init-video', function (req, res) {
   mongodb.MongoClient.connect(url, function (error, client) {
     if (error) {
@@ -16,18 +17,10 @@ app.get('/init-video', function (req, res) {
     }
     const db = client.db('videos');
     var bucket = new mongodb.GridFSBucket(db);
-
-    fs.createReadStream('./bigbuck.mp4').
-      pipe(bucket.openUploadStream('bigbuck.mp4'))
-      .on('error', function (error) {
-        res.json(error);
-      })
-      .on('finish', function () {
-        res.json("DONE")
-        console.log('done!');
-      });
+    fs.createReadStream('./bigbuck.mp4').pipe(bucket.openUploadStream('bigbuck.mp4'));
+    res.json("Done...");
   });
-})
+});
 
 app.get("/mongo-video", function (req, res) {
   mongodb.MongoClient.connect(url, function (error, client) {
@@ -35,7 +28,6 @@ app.get("/mongo-video", function (req, res) {
       res.json(error);
       return;
     }
-
     // Ensure there is a range given for the video
     const range = req.headers.range;
     if (!range) {
@@ -45,11 +37,8 @@ app.get("/mongo-video", function (req, res) {
     const db = client.db('videos');
     db.collection('fs.files').findOne({}, (err, video) => {
       const videoSize = video.length;
-
-      // Parse Range
-      // Example: "bytes=32324-"
       const start = Number(range.replace(/\D/g, ""));
-      const end = videoSize - 1
+      const end = videoSize - 1;
 
       // Create headers
       const contentLength = end - start + 1;
@@ -68,10 +57,7 @@ app.get("/mongo-video", function (req, res) {
       const downStream = bucket.openDownloadStreamByName('bigbuck.mp4', {
         start
       });
-      downStream.pipe(res)
-        .on('error', function (error) {
-          console.log(error)
-        })
+      downStream.pipe(res);
     });
   });
 });
