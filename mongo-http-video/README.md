@@ -1,6 +1,6 @@
 ## Requirements
 
-You need docker installed.
+My instructions use docker but you can run mongodb yourself locally as well.
 
 ## How to initialize the db with a video
 
