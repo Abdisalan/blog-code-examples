@@ -15,6 +15,7 @@ app.get('/init-video', function (req, res) {
       res.json(error);
       return;
     }
+
     const db = client.db('videos');
     var bucket = new mongodb.GridFSBucket(db);
     fs.createReadStream('./bigbuck.mp4').pipe(bucket.openUploadStream('bigbuck.mp4'));
@@ -28,6 +29,7 @@ app.get("/mongo-video", function (req, res) {
       res.json(error);
       return;
     }
+
     // Ensure there is a range given for the video
     const range = req.headers.range;
     if (!range) {
@@ -36,6 +38,12 @@ app.get("/mongo-video", function (req, res) {
 
     const db = client.db('videos');
     db.collection('fs.files').findOne({}, (err, video) => {
+      if (!video) {
+        res.status(404).send("No video uploaded!");
+        return;
+      }
+
+      // Find video size and range
       const videoSize = video.length;
       const start = Number(range.replace(/\D/g, ""));
       const end = videoSize - 1;
@@ -57,6 +65,8 @@ app.get("/mongo-video", function (req, res) {
       const downStream = bucket.openDownloadStreamByName('bigbuck.mp4', {
         start
       });
+
+      // Finally pipe video to response
       downStream.pipe(res);
     });
   });
