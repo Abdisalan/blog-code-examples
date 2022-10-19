@@ -1,0 +1,23 @@
+https://dev.to/abdisalan_js/how-to-code-a-video-streaming-server-using-nodejs-2o0
+
+https://stackoverflow.com/questions/14738354/nodejs-stream-video-that-is-being-downloaded
+
+https://github.com/moukmessie/blog-code-examples
+
+CLOUDINARY
+https://cloudinary.com/console/c-67aa579fd6cd362006682143bb820a/getting-started
+
+XPATH
+https://developer.mozilla.org/fr/docs/Web/XPath
+
+XMLHttpRequest
+https://developer.mozilla.org/fr/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest
+
+UDP 
+https://www.tech-hour.com/nodejs-udp-server
+
+https://gist.github.com/sid24rane/6e6698e93360f2694e310dd347a2e2eb
+
+FACULTATIFS FILES
+https://philna.sh/blog/2020/08/06/how-to-stream-file-downloads-in-Node-js-with-got/
+https://medium.com/geekculture/nodejs-image-upload-with-multer-e6cf08c1562f
