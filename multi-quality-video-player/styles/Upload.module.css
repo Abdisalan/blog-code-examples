@@ -1,0 +1,26 @@
+.container {
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
+}
+
+.main {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid black;
+  border-radius: 5px;
+  transition: height 0.5s;
+}
+
+.main h1 {
+  font-size: 2rem;
+}
+
+.main img {
+  width: 100%;
+}
