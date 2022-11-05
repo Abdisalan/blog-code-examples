@@ -16,9 +16,10 @@ First, initialize the database❗
 npm run init-db
 ```
 
-Then, run the development server:
+Then, create the public folder and run the development server:
 
 ```bash
+mkdir -p public
 npm run dev
 ```
 
