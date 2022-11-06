@@ -1,7 +1,7 @@
 .play {
   position: absolute;
   left: 10px;
-  bottom: 195px;
+  bottom: 10%;
   box-shadow: 3px 3px rgba(0, 0, 0, 0.5);
   font-size: 2rem;
 }
@@ -9,7 +9,7 @@
 .select {
   position: absolute;
   right: 10px;
-  bottom: 195px;
+  bottom: 10%;
   box-shadow: 3px 3px rgba(0, 0, 0, 0.5);
   font-size: 2rem;
 }
