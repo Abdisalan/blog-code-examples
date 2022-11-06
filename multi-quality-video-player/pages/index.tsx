@@ -1,7 +1,6 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import { useRef, SyntheticEvent, use } from 'react'
 
 import SqliteVideoDb, { Video } from '../lib/db'
 import Link from 'next/link'
