@@ -10,7 +10,7 @@ app.get("/video", function (req, res) {
   // Ensure there is a range given for the video
   const range = req.headers.range;
   if (!range) {
-    res.status(400).send("Requires Range header");
+    return res.status(400).send("Requires Range header");
   }
 
   // get video stats (about 61MB)
